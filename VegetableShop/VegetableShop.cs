@@ -8,14 +8,12 @@ namespace VegetableShop
 {
     internal class VegetableShop
     {
-        public List<Product> Products { get; set; } = [];
-
-        public bool ProductAvailability() => Products.Count > 0;
+        private List<Product> Products { get; set; } = [];        
         private decimal TotalCost() => Products.Sum(x => x.BasePrice);
         public void AddProducts(List<Product> products) => Products.AddRange(products);
         public void PrintProductsInfo()
         {
-            if (ProductAvailability())
+            if (Products.Count > 0)
             {
                 StringBuilder stringBuilder = new StringBuilder();
                 foreach (Product product in Products)
@@ -26,7 +24,7 @@ namespace VegetableShop
                 Console.WriteLine(stringBuilder);
                 Console.WriteLine($"Total products price: {TotalCost()}");
             }
-            else Console.WriteLine("Ти забув щось купити");
+            else Console.WriteLine(); //нічого не показуємо
         }
     }
 }
